@@ -37,15 +37,6 @@ record that an account (from an external service) will log.
 # TODO:
 A `Transaction` should record:
 * Account ID = Created by
-* Created at
-* Deleted at
-* Deleted by
-* Updated at
-* Updated by
-* No created by
-* Debits are represented as -
-* Credits are represented as +
-* However, again, we're going to restrict to "positive" transactions for now only
 
 * In a different service, it's up to the account type to ensure Debits and Credits
 are displayed correctly
@@ -97,11 +88,18 @@ that client secrets will be fairly secure.
 * The scope of the assignment suggests a fixed exchange rate - a better way
 would probably be keeping records of exchange rates over a period of time, and
 convert to those rates on a need-basis. This also falls in line with database
-normalization rules.
+normalization rules. Anyway, a fixed rate of 1 SAR = 0.27 USD is being used.
 
 * Again, since we're in the context of a micro service, I've assumed that users
 are being handled and tracked elsewhere. That said, we're still storing a
 `created_by` `uuid` in the Transaction model.
+
+* Debits are represented as - amounts and credits are represented as + amounts
+However, again, we're going to restrict to "positive" transactions only for now.
+Transactions depend on the type of the account they're from (i.e. asset,
+liability, etc.). Again, it's assumed `Account`s are handled by a different
+microservice where the transactions will be converted correctly to debit and
+credit amounts.
 
 * I've tried to keep things super simple and easy so that it's easy to get
 started and test without any complicated settings.
@@ -114,3 +112,53 @@ super simple to turn it into a nice PDF or CSV export as well.
 ## Other notes
 * Project structure derived from:
 [Django Project Structure](https://github.com/saqibur/django-project-structure)
+
+
+### API Error Format
+* Field/Validation Errors
+```json
+{
+	"success": false,
+	"code": 400,
+	"type": "field_error",
+	"error_message": "Invalid input.",
+	"details": [
+		{
+			"field": "password",
+			"errors": [
+				"This password is too short. It must contain at least 6 characters."
+			]
+		}
+	]
+}
+```
+
+* Non-Field Errors
+```json
+{
+	"success": false,
+	"code": 401,
+	"type": "non_field_error",
+	"error_message": "Incorrect authentication credentials.",
+	"details": {
+		"exception": "AuthenticationFailed",
+		"message": "No active account found with the given credentials",
+		"code": "no_active_account",
+    }
+}
+```
+
+* Unhandled Exception Errors (This replaces the default Django HTML error page)
+```json
+{
+	"success": false,
+	"code": 500,
+	"type": "non_field_error",
+	"error_message": "Unhandled exception",
+	"details": {
+		"exception": "AssertionError",
+		"message": "The field 'transaction_uuid' was declared on serializer TransactionSerializer, but has not been included in the 'fields' option.",
+		"code": "unhandled_exception"
+	}
+}
+```
