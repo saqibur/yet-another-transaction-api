@@ -3,8 +3,6 @@
 # Django imports
 from django.apps import AppConfig
 
-# Django Rest Framework imports
-
 # Third party imports
 
 # Local imports
