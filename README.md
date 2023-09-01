@@ -32,21 +32,6 @@ record that an account (from an external service) will log.
 `Transaction`s in the past 30 days.
 
 
-
-## Requirements:
-# TODO:
-A `Transaction` should record:
-* Account ID = Created by
-
-* In a different service, it's up to the account type to ensure Debits and Credits
-are displayed correctly
-* Unique identifier
-* ID
-* Amount of the transaction in a specified currency stored in a proper format
-* The transaction should measure what the exchange rate was at the time
-
-
-
 ## Getting Started
 * Note: `SERVER_NAME=LOCAL` ensures that you have access to some nice tooling
 for the project, such as, seeding scripts, `mypy`, `isort,` `black`, etc.
