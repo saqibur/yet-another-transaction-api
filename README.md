@@ -14,7 +14,7 @@ A simple API service that records transaction data.
 
 ### What is a `Transaction`?
 * In the context of this API, we're defining a transaction as: a single monetary
-record that an account (from an external service) will log.å
+record that an account (from an external service) will log.
 * Transactions are stored as SAR (Saudi Riyal) values. They're converted to USD
 (US Dollars) at run time, on demand.
 
@@ -57,7 +57,28 @@ are displayed correctly
 
 
 ## Getting Started
-* TODO: Add notes on getting set-up locally.
+* Note: `SERVER_NAME=LOCAL` ensures that you have access to some nice tooling
+for the project, such as, seeding scripts, `mypy`, `isort,` `black`, etc.
+
+* The project assumes your machine has the following software and their specific
+versions:
+    * A *nix operating system
+    * Docker OR Python 3.11.5^
+
+### Setting Up Locally
+* Clone the the repository from GitHub
+* `cd` into the correct directory `yet-another-transaction-api`
+* Create your own `.env` file using all the variables in `.env.example.`
+The following values need to be replaced with your environment specific ones:
+    * `DB_NAME`: Replace with your local Postgres settings. Examples are given.
+    * `SERVER_NAME`: Since we're developing locally, this should be `LOCAL`.
+* If Python:
+```bash
+# Create a virtual environment and install requirements (I'd suggest pyenv)
+pip install -r requirements/local.txt
+pre-commit install
+```
+* If Docker:
 * TODO: Add Docker-related instructions
 * NOTE: If you're on Windows, setting up WSL and following the above
 instructions should work out nicely.
@@ -87,3 +108,9 @@ started and test without any complicated settings.
 
 * The report generation functionality is only an endpoint for now, but it'll be
 super simple to turn it into a nice PDF or CSV export as well.
+
+
+
+## Other notes
+* Project structure derived from:
+[Django Project Structure](https://github.com/saqibur/django-project-structure)

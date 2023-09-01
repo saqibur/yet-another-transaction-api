@@ -1,0 +1,9 @@
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = 'migrations/*'
+
+[tool.ruff]
+# Allow lines to be as long as 100 characters, prevents conflicts with black
+line-length = 100
