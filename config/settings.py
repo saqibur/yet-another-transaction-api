@@ -59,7 +59,7 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
-    # "DEFAULT_AUTHENTICATION_CLASSES": ["apps.core.authenticate.CustomAuthentication"],
+    "DEFAULT_AUTHENTICATION_CLASSES": ["apps.core.authenticate.CustomAuthentication"],
     "EXCEPTION_HANDLER": "apps.core.exceptions.custom_exception_handler",
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PARSER_CLASSES": (
