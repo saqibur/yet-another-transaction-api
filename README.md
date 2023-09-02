@@ -7,6 +7,8 @@
 ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
 
+![Diagram](docs/Yet-Another-Transaction-API.drawio.png)
+
 # Yet-Another-Transaction-API
 A simple API service that records transaction data.
 
