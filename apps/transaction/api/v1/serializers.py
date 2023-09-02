@@ -1,7 +1,6 @@
 # Standard library imports
 
 # Django imports
-from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 # Third party imports
@@ -14,3 +13,8 @@ class TransactionModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = "__all__"
+
+
+class ReportDateRangeSerializer(serializers.Serializer):
+    to_date = serializers.DateField(required=True)
+    from_date = serializers.DateField(required=True)

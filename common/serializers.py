@@ -6,8 +6,6 @@ from rest_framework.serializers import (
     Serializer,
 )
 
-from django.utils.translation import gettext_lazy as _
-
 
 class DynamicFieldsModelSerializer(ModelSerializer):
     """
@@ -42,5 +40,11 @@ def get_validated_data(serializer: Serializer, request: Request, fields: List[st
     else:
         serializer = serializer(data=request.data)
 
+    serializer.is_valid(raise_exception=True)
+    return serializer.validated_data
+
+
+def get_validated_query_parameters(serializer: Serializer, request: Request):
+    serializer = serializer(data=request.GET)
     serializer.is_valid(raise_exception=True)
     return serializer.validated_data

@@ -79,10 +79,6 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.MultiPartRenderer",
         "rest_framework.renderers.JSONRenderer",
     ),
-    # "DEFAULT_PERMISSION_CLASSES": [
-    #     "rest_framework.permissions.IsAuthenticated",
-    # ],
-    "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
 
 WSGI_APPLICATION = "config.wsgi.application"
