@@ -10,7 +10,7 @@
 # Yet-Another-Transaction-API
 A simple API service that records transaction data.
 
-## Requirements
+## Requirements and Functionality
 
 ### What is a `Transaction`?
 * In the context of this API, we're defining a transaction as: a single monetary
@@ -23,6 +23,7 @@ record that an account (from an external service) will log.
 * Create `Transaction` records
 * Retrieve `Transaction` records
 * Generate a report/summary from `Transactions` within a date range.
+* Head to the  `/schema/swagger-ui/` route to view all API functionality.
 
 
 ### What is a report?
@@ -48,6 +49,8 @@ versions:
 The following values need to be replaced with your environment specific ones:
     * `DB_NAME`: Replace with your local Postgres settings. Examples are given.
     * `SERVER_NAME`: Since we're developing locally, this should be `LOCAL`.
+    * `API_KEY`: Generating any API key for this will work. I just use
+    `from django.utils.crypto import get_random_string` to generate it.
 * If Python:
 ```bash
 # Create a virtual environment and install requirements (I'd suggest pyenv)
