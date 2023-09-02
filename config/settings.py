@@ -59,9 +59,7 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        # "apps.core.authenticate.CustomAuthentication"
-    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": ["apps.core.authenticate.CustomAuthentication"],
     "EXCEPTION_HANDLER": "apps.core.exceptions.custom_exception_handler",
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PARSER_CLASSES": (
@@ -81,10 +79,6 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.MultiPartRenderer",
         "rest_framework.renderers.JSONRenderer",
     ),
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
-    "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
 
 WSGI_APPLICATION = "config.wsgi.application"
@@ -148,4 +142,6 @@ if config("SERVER_NAME") in [LOCAL_SERVER]:
         "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
         "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
         "REDOC_DIST": "SIDECAR",
+        "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
+        "SERVE_AUTHENTICATION": None,
     }

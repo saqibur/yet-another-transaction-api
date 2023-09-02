@@ -22,11 +22,17 @@ if config("SERVER_NAME") in [LOCAL_SERVER]:
         SpectacularSwaggerView,
     )
 
+    class CustomSpectacularAPIView(SpectacularAPIView):
+        authentication_classes = ()
+
+    class CustomSpectacularSwaggerView(SpectacularSwaggerView):
+        authentication_classes = ()
+
     urlpatterns += [
-        path("schema/", SpectacularAPIView.as_view(), name="schema"),
+        path("schema/", CustomSpectacularAPIView.as_view(), name="schema"),
         path(
             "schema/swagger-ui/",
-            SpectacularSwaggerView.as_view(url_name="schema"),
+            CustomSpectacularSwaggerView.as_view(url_name="schema"),
             name="swagger-ui",
         ),
     ]
