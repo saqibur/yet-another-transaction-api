@@ -61,7 +61,7 @@ pre-commit install
 ```
 * If Docker:
 	* Build: `docker build -t yata .`
-	* Run: `docker run -p 8000 yata`
+	* Run: `docker run -it -p 8000:8000 yata`
 * NOTE: If you're on Windows, setting up WSL and following the above
 instructions should work out nicely.
 

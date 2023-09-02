@@ -1,4 +1,5 @@
 # Standard library imports
+import os
 
 # Django imports
 from pathlib import Path
@@ -18,6 +19,7 @@ DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=str).split(",")
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 INSTALLED_APPS = [
     "django.contrib.auth",
