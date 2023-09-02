@@ -28,6 +28,11 @@ class TransactionModelViewSet(ModelViewSet):
     serializer_class = TransactionModelSerializer
     queryset = serializer_class.Meta.model.objects.all()
 
+    def create(self, request, *args, **kwargs):
+        serialized_transaction_data = super().create(request, *args, **kwargs)
+        TransactionService.anomaly_check()
+        return serialized_transaction_data
+
 
 class TransactionReport(APIView):
     def get(self, request, *args, **kwargs):
